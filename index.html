@@ -1082,6 +1082,297 @@
       transform: translateY(-1px);
     }
 
+    /* Nút mở Shop Phước Phẩm trên thanh Header */
+    .hud-shop-trigger-btn {
+      background: linear-gradient(135deg, #e67e22, #b85d0d);
+      color: #fff;
+      border: 1px solid #ffd700;
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      box-shadow: 0 2px 10px rgba(230, 126, 34, 0.4);
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .hud-shop-trigger-btn:hover {
+      transform: translateY(-1px) scale(1.04);
+      box-shadow: 0 4px 15px rgba(230, 126, 34, 0.6);
+      filter: brightness(1.1);
+    }
+
+    /* Hiệu ứng Cooldown trên nút bấm hành động */
+    .action-btn.cooldown {
+      opacity: 0.55;
+      pointer-events: none;
+      filter: grayscale(0.4);
+      position: relative;
+    }
+    .action-btn.cooldown::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 16px;
+      background: rgba(0, 0, 0, 0.35);
+    }
+
+    /* MODAL SHOP PHƯỚC PHẨM CÔNG ĐỨC */
+    .hud-shop-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 210;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+    .shop-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 2, 1, 0.75);
+      backdrop-filter: blur(8px);
+      animation: fadeInBackdrop 0.25s ease forwards;
+    }
+    .shop-window {
+      position: relative;
+      width: 94%;
+      max-width: 740px;
+      max-height: 88vh;
+      background: linear-gradient(165deg, rgba(42, 13, 8, 0.98) 0%, rgba(18, 5, 3, 0.99) 100%);
+      border: 2px solid var(--gold-secondary);
+      border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.35);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      animation: lbPopup 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.25) forwards;
+    }
+    .shop-header {
+      padding: 14px 20px;
+      background: rgba(60, 16, 10, 0.88);
+      border-bottom: 1.5px solid rgba(212, 175, 55, 0.3);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .shop-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .shop-header-icon {
+      font-size: 30px;
+    }
+    .shop-header-left h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 19px;
+      color: var(--gold-primary);
+      letter-spacing: 1px;
+    }
+    .shop-header-left p {
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .shop-header-right {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .shop-merit-badge {
+      background: rgba(18, 5, 3, 0.8);
+      border: 1px solid var(--gold-primary);
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--gold-primary);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      box-shadow: 0 2px 10px rgba(255, 215, 0, 0.2);
+    }
+    .shop-close-btn {
+      background: rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: var(--text-muted);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      font-size: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .shop-close-btn:hover {
+      background: #7a1810;
+      color: #fff;
+      border-color: #ffd700;
+      transform: scale(1.1);
+    }
+    .shop-tabs {
+      display: flex;
+      gap: 6px;
+      padding: 10px 18px 4px;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+    .shop-tabs::-webkit-scrollbar { display: none; }
+    .shop-tab-btn {
+      padding: 6px 13px;
+      background: rgba(25, 7, 4, 0.7);
+      border: 1px solid rgba(212, 175, 55, 0.3);
+      border-radius: 12px;
+      color: var(--text-muted);
+      font-size: 12px;
+      font-weight: 600;
+      cursor: pointer;
+      white-space: nowrap;
+      transition: all 0.2s;
+    }
+    .shop-tab-btn:hover {
+      background: rgba(55, 17, 10, 0.8);
+      color: #fff;
+    }
+    .shop-tab-btn.active {
+      background: linear-gradient(135deg, #e67e22, #b85d0d);
+      border-color: #ffd700;
+      color: #fff;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .shop-items-container {
+      flex: 1;
+      overflow-y: auto;
+      padding: 12px 18px 16px;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 12px;
+      max-height: 460px;
+    }
+    .shop-items-container::-webkit-scrollbar {
+      width: 5px;
+    }
+    .shop-items-container::-webkit-scrollbar-thumb {
+      background: rgba(212, 175, 55, 0.4);
+      border-radius: 4px;
+    }
+    .shop-card {
+      background: rgba(25, 8, 4, 0.85);
+      border: 1.5px solid rgba(212, 175, 55, 0.28);
+      border-radius: 16px;
+      padding: 12px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+      transition: all 0.2s ease;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+    }
+    .shop-card:hover {
+      border-color: var(--gold-primary);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.6), 0 0 15px rgba(212, 175, 55, 0.2);
+    }
+    .shop-card.is-equipped {
+      border-color: #4caf50;
+      background: rgba(25, 45, 25, 0.6);
+      box-shadow: 0 0 14px rgba(76, 175, 80, 0.3);
+    }
+    .shop-card.is-owned {
+      border-color: rgba(255, 215, 0, 0.55);
+    }
+    .shop-card-badge {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 6px;
+      border-radius: 8px;
+    }
+    .shop-card-badge.equipped {
+      background: #4caf50;
+      color: #fff;
+    }
+    .shop-card-badge.owned {
+      background: #d4af37;
+      color: #1a0804;
+    }
+    .shop-card-icon {
+      font-size: 38px;
+      margin: 4px 0 8px;
+      filter: drop-shadow(0 2px 6px rgba(0,0,0,0.5));
+    }
+    .shop-card-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .shop-card-desc {
+      font-size: 11px;
+      color: var(--text-muted);
+      line-height: 1.4;
+      margin-bottom: 10px;
+      flex: 1;
+    }
+    .shop-card-price {
+      font-size: 13px;
+      font-weight: 800;
+      color: var(--gold-primary);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .shop-card-btn {
+      width: 100%;
+      padding: 7px 10px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 700;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .shop-card-btn.btn-buy {
+      background: linear-gradient(135deg, #ffd700, #c59316);
+      color: #240804;
+    }
+    .shop-card-btn.btn-buy:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+    .shop-card-btn.btn-buy:disabled {
+      background: #443128;
+      color: #8c766b;
+      cursor: not-allowed;
+      transform: none;
+      filter: none;
+    }
+    .shop-card-btn.btn-equip {
+      background: linear-gradient(135deg, #3498db, #2471a3);
+      color: #fff;
+    }
+    .shop-card-btn.btn-equip:hover {
+      filter: brightness(1.1);
+      transform: scale(1.02);
+    }
+    .shop-card-btn.btn-unequip {
+      background: linear-gradient(135deg, #27ae60, #1e8449);
+      color: #fff;
+    }
+    .shop-card-btn.btn-unequip:hover {
+      background: #c0392b;
+    }
+
     @media (max-width: 768px) {
       .hud-top-right { display: none; }
       .chat-box-container { width: 280px; height: 180px; bottom: 105px; }
@@ -1089,6 +1380,8 @@
       .action-btn { padding: 0 11px; }
       .leaderboard-window { width: 95%; max-height: 90vh; }
       .lb-top1-banner .top1-name { max-width: 130px; }
+      .shop-window { width: 95%; max-height: 90vh; }
+      .shop-items-container { grid-template-columns: repeat(2, 1fr); gap: 8px; padding: 10px; }
     }
   </style>
 
@@ -1122,6 +1415,9 @@
     <div class="temple-header-card">
       <span class="temple-title">☸ Đại Hùng Bảo Điện</span>
       <span class="online-badge" id="online-counter">1 đồng tu</span>
+      <button class="hud-shop-trigger-btn" id="btn-open-shop" title="Bảo Điện Phước Phẩm - Mua Trang Phục (Phím P)">
+        🛍️ Phước Phẩm
+      </button>
       <button class="hud-lb-trigger-btn" id="btn-open-leaderboard" title="Mở Bảng Vàng Công Đức (Phím B)">
         🏆 Bảng Vàng
       </button>
@@ -1178,6 +1474,9 @@
       </button>
       <button class="action-btn" id="btn-bell" title="Thỉnh Đại Hồng Chung">
         <span>🔔</span> <span class="label-txt">Thỉnh Chuông</span>
+      </button>
+      <button class="action-btn" id="btn-main-shop" title="Bảo Điện Phước Phẩm - Mua Trang Phục (Phím P)">
+        <span>🛍️</span> <span class="label-txt">Phước Phẩm</span>
       </button>
       <button class="action-btn" id="btn-main-leaderboard" title="Bảng Vàng Công Đức Realtime (Phím B)">
         <span>🏆</span> <span class="label-txt">Bảng Vàng</span>
@@ -1247,6 +1546,43 @@
     </div>
   </div>
 
+  <!-- MODAL BẢO ĐIỆN PHƯỚC PHẨM (SHOP TRANG PHỤC CÔNG ĐỨC) -->
+  <div class="hud-shop-modal" id="shop-modal" style="display: none;">
+    <div class="shop-backdrop" id="shop-backdrop"></div>
+    <div class="shop-window">
+      <div class="shop-header">
+        <div class="shop-header-left">
+          <span class="shop-header-icon">🛍️</span>
+          <div>
+            <h2>BẢO ĐIỆN PHƯỚC PHẨM</h2>
+            <p>Dùng công đức tích lũy hoán đổi pháp phục & trang sức thiền môn</p>
+          </div>
+        </div>
+        <div class="shop-header-right">
+          <div class="shop-merit-badge">
+            ✨ Công đức: <span id="shop-merit-balance">0</span>
+          </div>
+          <button class="shop-close-btn" id="btn-close-shop" title="Đóng (Esc)">&times;</button>
+        </div>
+      </div>
+
+      <!-- Tabs phân loại vật phẩm -->
+      <div class="shop-tabs">
+        <button class="shop-tab-btn active" data-cat="all">Tất Cả (25)</button>
+        <button class="shop-tab-btn" data-cat="hat">Mũ & Hào Quang (5)</button>
+        <button class="shop-tab-btn" data-cat="shirt">Áo & Cà Sa (5)</button>
+        <button class="shop-tab-btn" data-cat="pants">Quần Pháp Y (5)</button>
+        <button class="shop-tab-btn" data-cat="shoes">Giày & Hài Thiền (5)</button>
+        <button class="shop-tab-btn" data-cat="set">Set Trọn Bộ (5)</button>
+      </div>
+
+      <!-- Danh sách vật phẩm dạng Grid -->
+      <div class="shop-items-container" id="shop-items-container">
+        <!-- Render động qua JavaScript -->
+      </div>
+    </div>
+  </div>
+
   <!-- Firebase Realtime Database & Logic 3D -->
   <script type="module">
     import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.0/firebase-app.js";
@@ -1298,6 +1634,56 @@
     let activeOnlinePlayerIds = new Set();
     let currentLeaderboardTab = 'all';
     let meritSyncTimeout = null;
+
+    // =========================================================================
+    // DỮ LIỆU BẢO ĐIỆN PHƯỚC PHẨM (SHOP TRANG PHỤC CÔNG ĐỨC: 400 - 2000 ĐIỂM)
+    // =========================================================================
+    let purchasedItems = [];
+    try {
+      purchasedItems = JSON.parse(localStorage.getItem('chua_purchased_items') || '[]');
+    } catch(e) { purchasedItems = []; }
+
+    let myEquipped = {};
+    try {
+      myEquipped = JSON.parse(localStorage.getItem('chua_equipped_items') || '{}');
+    } catch(e) { myEquipped = {}; }
+
+    const SHOP_ITEMS = [
+      // 1. MŨ & HÀO QUANG (400 - 2000)
+      { id: 'hat_non_la', cat: 'hat', name: 'Nón Lá Trúc Lâm', price: 400, icon: '👒', desc: 'Nón lá truyền thống thanh tao, mộc mạc chốn thiền môn.' },
+      { id: 'hat_khan_xep', cat: 'hat', name: 'Khăn Vấn Lam Y', price: 750, icon: '🧕', desc: 'Khăn xếp màu lam tịnh mặc của người cư sĩ tinh cần.' },
+      { id: 'hat_ty_lu', cat: 'hat', name: 'Mũ Tỳ Lư Liên Hoa', price: 1200, icon: '👑', desc: 'Mũ cánh sen vàng kim tôn quý của bậc thượng tọa đại tăng.' },
+      { id: 'hat_hao_quang_vang', cat: 'hat', name: 'Hào Quang Kim Cang', price: 1600, icon: '☀️', desc: 'Vòng sáng hào quang hoàng kim tỏa rạng sau đầu.' },
+      { id: 'hat_hao_quang_that_bao', cat: 'hat', name: 'Đại Hào Quang Thất Bảo', price: 2000, icon: '☸', desc: 'Hào quang thất sắc chuyển động ngũ sắc huyền diệu vô lượng.' },
+
+      // 2. ÁO & CÀ SA (450 - 2000)
+      { id: 'shirt_lam_y', cat: 'shirt', name: 'Áo Tràng Lam Tinh Tấn', price: 450, icon: '👘', desc: 'Pháp phục áo tràng lam quen thuộc của phật tử thuần thành.' },
+      { id: 'shirt_nau_song', cat: 'shirt', name: 'Áo Nâu Sồng Thiền Môn', price: 800, icon: '🟤', desc: 'Chiếc áo nâu chân phương, nhắc nhở tâm hồn luôn thanh tịnh.' },
+      { id: 'shirt_hoang_y', cat: 'shirt', name: 'Y Cà Sa Hoàng Kim', price: 1250, icon: '✨', desc: 'Y cà sa sắc vàng óng ánh, trang nghiêm pháp tướng cao tăng.' },
+      { id: 'shirt_dieu_ngu', cat: 'shirt', name: 'Đại Y Điều Ngự Đỏ Tía', price: 1700, icon: '🏮', desc: 'Đại y sắc đỏ tía thêu viền chỉ vàng quý phái thiêng liêng.' },
+      { id: 'shirt_bach_ngoc', cat: 'shirt', name: 'Bạch Liên Pháp Y Phát Quang', price: 2000, icon: '🪷', desc: 'Pháp y trắng ngọc ngà phát quang ánh sen thanh tịnh độ.' },
+
+      // 3. QUẦN PHÁP Y (400 - 1900)
+      { id: 'pants_lam_y', cat: 'pants', name: 'Quần Vải Lam Mộc', price: 400, icon: '👖', desc: 'Quần vải lam thoáng mát đồng bộ với áo tràng cư sĩ.' },
+      { id: 'pants_nau_song', cat: 'pants', name: 'Quần Nâu Thiền Định', price: 700, icon: '🤎', desc: 'Quần vải nâu gụ mộc mạc cho bước chân an lạc.' },
+      { id: 'pants_hoang_kim', cat: 'pants', name: 'Quần Gấm Hoàng Triều', price: 1100, icon: '🌟', desc: 'Tông vàng hổ phách viền vàng kim sa óng ả.' },
+      { id: 'pants_do_tia', cat: 'pants', name: 'Quần Tía Sa Đầm Ấm', price: 1500, icon: '🧧', desc: 'Tông đỏ tía thêu hoa văn truyền thống thiêng liêng.' },
+      { id: 'pants_bach_y', cat: 'pants', name: 'Bạch Tùng Y Tuyết Sơn', price: 1900, icon: '⚪', desc: 'Trắng tuyết tinh khiết, nhẹ nhàng thanh thoát như mây.' },
+
+      // 4. GIÀY & HÀI THIỀN (400 - 1950)
+      { id: 'shoes_vai_lam', cat: 'shoes', name: 'Hài Vải Lam Cư Sĩ', price: 400, icon: '👞', desc: 'Hài vải lam êm ái tiện đi kinh hành tịnh tâm.' },
+      { id: 'shoes_vai_nau', cat: 'shoes', name: 'Hài Nâu Thiền Hành', price: 650, icon: '🥿', desc: 'Đôi hài nâu sồng theo bước chân buông bỏ muộn phiền.' },
+      { id: 'shoes_kim_tuyen', cat: 'shoes', name: 'Hài Đen Thêu Sen Vàng', price: 1150, icon: '⚜️', desc: 'Hài đen cổ truyền đính cánh sen kim tuyến tinh xảo.' },
+      { id: 'shoes_hoang_gia', cat: 'shoes', name: 'Hài Gấm Đỏ Hoàng Triều', price: 1550, icon: '👡', desc: 'Hài đỏ thêu chỉ vàng quý phái của bậc chân tu.' },
+      { id: 'shoes_tinh_do', cat: 'shoes', name: 'Hài Bạch Vân Tịnh Độ', price: 1950, icon: '☁️', desc: 'Hài trắng ngà có vệt hoa sen nở dưới chân.' },
+
+      // 5. SET TRỌN BỘ HOÀN CHỈNH (800 - 2000)
+      { id: 'set_cu_si', cat: 'set', name: 'Set Cư Sĩ Tịnh Tâm', price: 800, icon: '🙏', desc: 'Trọn bộ Khăn vấn lam, Áo tràng lam, Quần lam và Hài lam đồng bộ.' },
+      { id: 'set_thien_su', cat: 'set', name: 'Set Thiền Sư Mộc Mạc', price: 1200, icon: '🧘', desc: 'Trọn bộ Nâu sồng tịnh giới từ đầu đến chân kèm Tràng hạt Bồ Đề.' },
+      { id: 'set_cao_tang', cat: 'set', name: 'Set Cao Tăng Hoàng Gia', price: 1600, icon: '📿', desc: 'Mũ Tỳ Lư, Cà sa Hoàng Kim rực rỡ, Quần gấm và Hài thêu sen.' },
+      { id: 'set_dieu_ngu', cat: 'set', name: 'Set Đại Tăng Điều Ngự', price: 1900, icon: '🏛️', desc: 'Đại y đỏ tía, Hào quang kim cang rực sáng, Hài gấm hoàng triều.' },
+      { id: 'set_kim_than', cat: 'set', name: 'Set Vạn Đức Kim Thân Tối Thượng', price: 2000, icon: '🏆', desc: 'Toàn thân hóa kim thân dát vàng rực rỡ, Đại hào quang Thất Bảo tỏa sáng!' }
+    ];
 
     async function syncLeaderboard(immediate = false, actionNote = '') {
       if (!isEntered) return;
@@ -2019,22 +2405,53 @@
       const torsoPivot = new THREE.Group();
       pelvis.add(torsoPivot);
 
+      // Vật liệu độc lập cho từng phần trang phục
+      const skinMat = new THREE.MeshStandardMaterial({ color: 0xf7f7f7, roughness: 0.32, metalness: 0.04 });
+      const shirtMat = new THREE.MeshStandardMaterial({ color: 0xf7f7f7, roughness: 0.35, metalness: 0.04 });
+      const pantsMat = new THREE.MeshStandardMaterial({ color: 0xf7f7f7, roughness: 0.35, metalness: 0.04 });
+      const shoesMat = new THREE.MeshStandardMaterial({ color: 0xf7f7f7, roughness: 0.35, metalness: 0.04 });
+
       const torsoGeo = new THREE.SphereGeometry(0.35, 24, 24);
       torsoGeo.scale(1.0, 1.48, 0.88);
-      const torsoMesh = new THREE.Mesh(torsoGeo, clayMat);
+      const torsoMesh = new THREE.Mesh(torsoGeo, shirtMat);
       torsoMesh.position.y = 0.35;
       torsoMesh.castShadow = true;
       torsoMesh.receiveShadow = true;
       torsoPivot.add(torsoMesh);
 
+      // Dải Cà Sa vắt chéo ngực
+      const sashMesh = new THREE.Mesh(
+        new THREE.TorusGeometry(0.38, 0.05, 10, 24),
+        new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.3, metalness: 0.4 })
+      );
+      sashMesh.rotation.x = Math.PI / 2 + 0.32;
+      sashMesh.rotation.y = -0.38;
+      sashMesh.position.set(0, 0.42, 0.02);
+      sashMesh.visible = false;
+      torsoPivot.add(sashMesh);
+
+      // Tràng Hạt Bồ Đề trên cổ
+      const beadsMesh = new THREE.Mesh(
+        new THREE.TorusGeometry(0.32, 0.032, 10, 24),
+        new THREE.MeshStandardMaterial({ color: 0x5d4037, roughness: 0.45, metalness: 0.15 })
+      );
+      beadsMesh.rotation.x = Math.PI / 2 + 0.22;
+      beadsMesh.position.set(0, 0.65, 0.05);
+      beadsMesh.visible = false;
+      torsoPivot.add(beadsMesh);
+
       const headPivot = new THREE.Group();
       headPivot.position.y = 0.88;
       torsoPivot.add(headPivot);
 
-      const headMesh = new THREE.Mesh(new THREE.SphereGeometry(0.42, 28, 28), clayMat);
+      const headMesh = new THREE.Mesh(new THREE.SphereGeometry(0.42, 28, 28), skinMat);
       headMesh.position.y = 0.25;
       headMesh.castShadow = true;
       headPivot.add(headMesh);
+
+      // Nhóm chứa Mũ / Hào Quang trên đầu
+      const hatSlot = new THREE.Group();
+      headPivot.add(hatSlot);
 
       const leftArmPivot = new THREE.Group();
       leftArmPivot.position.set(-0.38, 0.7, 0);
@@ -2042,11 +2459,11 @@
 
       const armGeo = new THREE.CylinderGeometry(0.085, 0.075, 0.56, 16);
       armGeo.translate(0, -0.26, 0);
-      const leftArmMesh = new THREE.Mesh(armGeo, clayMat);
+      const leftArmMesh = new THREE.Mesh(armGeo, shirtMat);
       leftArmMesh.castShadow = true;
       leftArmPivot.add(leftArmMesh);
 
-      const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.095, 14, 14), clayMat);
+      const leftHand = new THREE.Mesh(new THREE.SphereGeometry(0.095, 14, 14), skinMat);
       leftHand.position.y = -0.55;
       leftArmPivot.add(leftHand);
 
@@ -2054,11 +2471,11 @@
       rightArmPivot.position.set(0.38, 0.7, 0);
       torsoPivot.add(rightArmPivot);
 
-      const rightArmMesh = new THREE.Mesh(armGeo, clayMat);
+      const rightArmMesh = new THREE.Mesh(armGeo, shirtMat);
       rightArmMesh.castShadow = true;
       rightArmPivot.add(rightArmMesh);
 
-      const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.095, 14, 14), clayMat);
+      const rightHand = new THREE.Mesh(new THREE.SphereGeometry(0.095, 14, 14), skinMat);
       rightHand.position.y = -0.55;
       rightArmPivot.add(rightHand);
 
@@ -2068,13 +2485,13 @@
 
       const legGeo = new THREE.CylinderGeometry(0.10, 0.085, 0.68, 16);
       legGeo.translate(0, -0.34, 0);
-      const leftLegMesh = new THREE.Mesh(legGeo, clayMat);
+      const leftLegMesh = new THREE.Mesh(legGeo, pantsMat);
       leftLegMesh.castShadow = true;
       leftLegPivot.add(leftLegMesh);
 
       const footGeo = new THREE.SphereGeometry(0.125, 16, 16);
       footGeo.scale(1.0, 0.65, 1.55);
-      const leftFoot = new THREE.Mesh(footGeo, clayMat);
+      const leftFoot = new THREE.Mesh(footGeo, shoesMat);
       leftFoot.position.set(0, -0.68, 0.06);
       leftFoot.castShadow = true;
       leftLegPivot.add(leftFoot);
@@ -2083,11 +2500,11 @@
       rightLegPivot.position.set(0.19, 0, 0);
       pelvis.add(rightLegPivot);
 
-      const rightLegMesh = new THREE.Mesh(legGeo, clayMat);
+      const rightLegMesh = new THREE.Mesh(legGeo, pantsMat);
       rightLegMesh.castShadow = true;
       rightLegPivot.add(rightLegMesh);
 
-      const rightFoot = new THREE.Mesh(footGeo, clayMat);
+      const rightFoot = new THREE.Mesh(footGeo, shoesMat);
       rightFoot.position.set(0, -0.68, 0.06);
       rightFoot.castShadow = true;
       rightLegPivot.add(rightFoot);
@@ -2138,6 +2555,161 @@
         },
         setMerit(score) {
           if (meritValEl) meritValEl.textContent = score != null ? Number(score).toLocaleString('vi-VN') : '0';
+        },
+        equip(equippedData = {}) {
+          // Reset về mặc định
+          skinMat.color.setHex(0xf7f7f7);
+          skinMat.roughness = 0.32;
+          skinMat.metalness = 0.04;
+
+          shirtMat.color.setHex(0xf7f7f7);
+          shirtMat.roughness = 0.35;
+          shirtMat.metalness = 0.04;
+          shirtMat.emissive.setHex(0x000000);
+
+          pantsMat.color.setHex(0xf7f7f7);
+          shoesMat.color.setHex(0xf7f7f7);
+
+          sashMesh.visible = false;
+          beadsMesh.visible = false;
+
+          while (hatSlot.children.length > 0) {
+            hatSlot.remove(hatSlot.children[0]);
+          }
+
+          let effHat = equippedData.hat;
+          let effShirt = equippedData.shirt;
+          let effPants = equippedData.pants;
+          let effShoes = equippedData.shoes;
+
+          // Nếu có trang bị SET hoàn chỉnh, override các slot
+          if (equippedData.set) {
+            const sid = equippedData.set;
+            if (sid === 'set_cu_si') {
+              effHat = 'hat_khan_xep'; effShirt = 'shirt_lam_y'; effPants = 'pants_lam_y'; effShoes = 'shoes_vai_lam';
+            } else if (sid === 'set_thien_su') {
+              effShirt = 'shirt_nau_song'; effPants = 'pants_nau_song'; effShoes = 'shoes_vai_nau';
+              beadsMesh.visible = true;
+            } else if (sid === 'set_cao_tang') {
+              effHat = 'hat_ty_lu'; effShirt = 'shirt_hoang_y'; effPants = 'pants_hoang_kim'; effShoes = 'shoes_kim_tuyen';
+            } else if (sid === 'set_dieu_ngu') {
+              effHat = 'hat_hao_quang_vang'; effShirt = 'shirt_dieu_ngu'; effPants = 'pants_do_tia'; effShoes = 'shoes_hoang_gia';
+            } else if (sid === 'set_kim_than') {
+              effHat = 'hat_hao_quang_that_bao'; effShirt = 'shirt_hoang_y'; effPants = 'pants_hoang_kim'; effShoes = 'shoes_tinh_do';
+              skinMat.color.setHex(0xffd700);
+              skinMat.metalness = 0.85;
+              skinMat.roughness = 0.22;
+            }
+          }
+
+          // 1. ÁO
+          if (effShirt === 'shirt_lam_y') {
+            shirtMat.color.setHex(0x436b8a);
+          } else if (effShirt === 'shirt_nau_song') {
+            shirtMat.color.setHex(0x634335);
+          } else if (effShirt === 'shirt_hoang_y') {
+            shirtMat.color.setHex(0xe6a817);
+            shirtMat.metalness = 0.35;
+            sashMesh.visible = true;
+            sashMesh.material.color.setHex(0xa92b1b);
+          } else if (effShirt === 'shirt_dieu_ngu') {
+            shirtMat.color.setHex(0x821910);
+            sashMesh.visible = true;
+            sashMesh.material.color.setHex(0xffd700);
+          } else if (effShirt === 'shirt_bach_ngoc') {
+            shirtMat.color.setHex(0xf0f4f8);
+            shirtMat.emissive.setHex(0x223344);
+            beadsMesh.visible = true;
+          }
+
+          // 2. QUẦN
+          if (effPants === 'pants_lam_y') {
+            pantsMat.color.setHex(0x34556f);
+          } else if (effPants === 'pants_nau_song') {
+            pantsMat.color.setHex(0x4d3429);
+          } else if (effPants === 'pants_hoang_kim') {
+            pantsMat.color.setHex(0xc9931b);
+          } else if (effPants === 'pants_do_tia') {
+            pantsMat.color.setHex(0x6e130d);
+          } else if (effPants === 'pants_bach_y') {
+            pantsMat.color.setHex(0xdce2e8);
+          }
+
+          // 3. GIÀY / HÀI
+          if (effShoes === 'shoes_vai_lam') {
+            shoesMat.color.setHex(0x2b4254);
+          } else if (effShoes === 'shoes_vai_nau') {
+            shoesMat.color.setHex(0x3a281e);
+          } else if (effShoes === 'shoes_kim_tuyen') {
+            shoesMat.color.setHex(0x1a1a1a);
+          } else if (effShoes === 'shoes_hoang_gia') {
+            shoesMat.color.setHex(0x63100a);
+          } else if (effShoes === 'shoes_tinh_do') {
+            shoesMat.color.setHex(0xffffff);
+          }
+
+          // 4. MŨ / HÀO QUANG
+          if (effHat === 'hat_non_la') {
+            const cone = new THREE.Mesh(
+              new THREE.ConeGeometry(0.58, 0.22, 24, 1, true),
+              new THREE.MeshStandardMaterial({ color: 0xd4b584, roughness: 0.7, side: THREE.DoubleSide })
+            );
+            cone.position.set(0, 0.44, 0);
+            cone.castShadow = true;
+            hatSlot.add(cone);
+
+          } else if (effHat === 'hat_khan_xep') {
+            const turban = new THREE.Mesh(
+              new THREE.TorusGeometry(0.42, 0.08, 12, 24),
+              new THREE.MeshStandardMaterial({ color: 0x3b5e78, roughness: 0.6 })
+            );
+            turban.rotation.x = Math.PI / 2;
+            turban.position.set(0, 0.32, 0);
+            hatSlot.add(turban);
+
+          } else if (effHat === 'hat_ty_lu') {
+            const crownGroup = new THREE.Group();
+            crownGroup.position.set(0, 0.34, 0);
+            const base = new THREE.Mesh(
+              new THREE.CylinderGeometry(0.42, 0.42, 0.16, 24),
+              new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.25, metalness: 0.6 })
+            );
+            crownGroup.add(base);
+            for (let i = 0; i < 5; i++) {
+              const angle = (i / 5) * Math.PI * 2;
+              const petal = new THREE.Mesh(
+                new THREE.ConeGeometry(0.12, 0.28, 8),
+                new THREE.MeshStandardMaterial({ color: 0xffd700, roughness: 0.2, metalness: 0.7 })
+              );
+              petal.position.set(Math.sin(angle) * 0.4, 0.18, Math.cos(angle) * 0.4);
+              petal.rotation.y = angle;
+              petal.rotation.x = 0.25;
+              crownGroup.add(petal);
+            }
+            hatSlot.add(crownGroup);
+
+          } else if (effHat === 'hat_hao_quang_vang') {
+            const halo = new THREE.Mesh(
+              new THREE.RingGeometry(0.55, 0.82, 36),
+              new THREE.MeshBasicMaterial({ color: 0xffd700, side: THREE.DoubleSide, transparent: true, opacity: 0.85 })
+            );
+            halo.position.set(0, 0.28, -0.32);
+            hatSlot.add(halo);
+
+          } else if (effHat === 'hat_hao_quang_that_bao') {
+            const halo1 = new THREE.Mesh(
+              new THREE.RingGeometry(0.58, 0.88, 36),
+              new THREE.MeshBasicMaterial({ color: 0xffd54f, side: THREE.DoubleSide, transparent: true, opacity: 0.8 })
+            );
+            halo1.position.set(0, 0.28, -0.34);
+            const halo2 = new THREE.Mesh(
+              new THREE.RingGeometry(0.88, 1.15, 36),
+              new THREE.MeshBasicMaterial({ color: 0x80deea, side: THREE.DoubleSide, transparent: true, opacity: 0.65 })
+            );
+            halo2.position.set(0, 0.28, -0.35);
+            hatSlot.add(halo1);
+            hatSlot.add(halo2);
+          }
         },
         showChatBubble(msg) {
           if (!msg) return;
@@ -2398,8 +2970,7 @@
       document.getElementById('sit-btn-text').innerText = 'Đứng Lên';
       document.getElementById('meditation-pill').classList.add('active');
 
-      addMerit(1, "Bắt đầu Tọa Thiền (+1 Công Đức) 🧘");
-
+      // Đứng lên / ngồi xuống KHÔNG cộng điểm, chỉ ngồi thiền 5s mới được +1 công đức
       if (meditationInterval) clearInterval(meditationInterval);
       meditationInterval = setInterval(() => {
         if (myState.isSitting && isEntered) {
@@ -2421,19 +2992,32 @@
       }
     }
 
+    let lastBowTime = 0;
     function performBow() {
+      const now = Date.now();
+      if (now - lastBowTime < 2000) return; // Delay 2s
       if (myState.isBowing) return;
+      lastBowTime = now;
+
       if (myState.isSitting) standUp();
       myState.isBowing = true;
       myState.rotY = Math.PI;
       SoundFX.playMo();
-      addMerit(3, "+3 Công Đức Lễ Phật 🙏");
+      addMerit(2, "+2 Công Đức Lễ Phật 🙏"); // Đúng 2 điểm
+      triggerBtnCooldown('btn-bow', 2000);
       broadcastMyState(true);
 
       setTimeout(() => {
         myState.isBowing = false;
         broadcastMyState(true);
       }, 2000);
+    }
+
+    function triggerBtnCooldown(btnId, durationMs) {
+      const btn = document.getElementById(btnId);
+      if (!btn) return;
+      btn.classList.add('cooldown');
+      setTimeout(() => btn.classList.remove('cooldown'), durationMs);
     }
 
     // =========================================================================
@@ -2448,6 +3032,7 @@
       const currentPayload = {
         name: myName,
         merit: Number(meritScore) || 0,
+        equipped: myEquipped,
         x: Number(myState.x.toFixed(2)),
         z: Number(myState.z.toFixed(2)),
         rotY: Number(myState.rotY.toFixed(2)),
@@ -2546,6 +3131,7 @@
             const newChar = createStickCharacter(data.name || "Đồng Tu", false);
             newChar.root.position.set(data.x || 0, 0, data.z || 6);
             if (data.merit != null) newChar.setMerit(data.merit);
+            if (data.equipped) newChar.equip(data.equipped);
             scene.add(newChar.root);
 
             remotePlayers.set(pid, {
@@ -2570,6 +3156,7 @@
             rp.target = { ...data };
             rp.char.setName(data.name || "Đồng Tu");
             if (data.merit != null) rp.char.setMerit(data.merit);
+            if (data.equipped) rp.char.equip(data.equipped);
 
             if (data.lastChat && data.chatTime && data.chatTime > rp.lastChatTime) {
               rp.lastChatTime = data.chatTime;
@@ -2772,14 +3359,186 @@
       performBow();
     });
 
+    document.getElementById('btn-open-shop').addEventListener('click', toggleShop);
+    document.getElementById('btn-main-shop').addEventListener('click', toggleShop);
+    document.getElementById('btn-close-shop').addEventListener('click', closeShop);
+    document.getElementById('shop-backdrop').addEventListener('click', closeShop);
+
+    document.querySelectorAll('.shop-tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.shop-tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentShopCat = btn.getAttribute('data-cat') || 'all';
+        renderShop();
+      });
+    });
+
     window.addEventListener('keydown', (e) => {
       if (document.activeElement && document.activeElement.tagName === 'INPUT') return;
       if (e.key === 'b' || e.key === 'B') {
         toggleLeaderboard();
+      } else if (e.key === 'p' || e.key === 'P') {
+        toggleShop();
       } else if (e.key === 'Escape') {
         closeLeaderboard();
+        closeShop();
       }
     });
+
+
+    // =========================================================================
+    // LOGIC SHOP PHƯỚC PHẨM CÔNG ĐỨC
+    // =========================================================================
+    let currentShopCat = 'all';
+
+    function renderShop() {
+      const container = document.getElementById('shop-items-container');
+      const balanceEl = document.getElementById('shop-merit-balance');
+      if (balanceEl) balanceEl.innerText = Number(meritScore).toLocaleString('vi-VN');
+      if (!container) return;
+
+      const filtered = currentShopCat === 'all' 
+        ? SHOP_ITEMS 
+        : SHOP_ITEMS.filter(item => item.cat === currentShopCat);
+
+      let html = '';
+      filtered.forEach(item => {
+        const isOwned = purchasedItems.includes(item.id);
+        const isEquipped = item.cat === 'set' 
+          ? (myEquipped.set === item.id)
+          : (myEquipped[item.cat] === item.id);
+
+        let badgeHtml = '';
+        if (isEquipped) {
+          badgeHtml = '<span class="shop-card-badge equipped">Đang mặc</span>';
+        } else if (isOwned) {
+          badgeHtml = '<span class="shop-card-badge owned">Đã sở hữu</span>';
+        }
+
+        let actionBtnHtml = '';
+        if (isEquipped) {
+          actionBtnHtml = `<button class="shop-card-btn btn-unequip" onclick="window.shopUnequipSlot('${item.cat}')">Tháo Ra</button>`;
+        } else if (isOwned) {
+          actionBtnHtml = `<button class="shop-card-btn btn-equip" onclick="window.shopEquipItem('${item.id}')">Mặc Lên</button>`;
+        } else {
+          const canAfford = meritScore >= item.price;
+          actionBtnHtml = `<button class="shop-card-btn btn-buy" ${canAfford ? '' : 'disabled'} onclick="window.shopBuyItem('${item.id}')">
+            ${canAfford ? 'Mua (' + item.price + ' ✨)' : 'Chưa đủ (' + item.price + ' ✨)'}
+          </button>`;
+        }
+
+        html += `
+          <div class="shop-card ${isEquipped ? 'is-equipped' : ''} ${isOwned ? 'is-owned' : ''}">
+            ${badgeHtml}
+            <div class="shop-card-icon">${item.icon}</div>
+            <div class="shop-card-name">${escapeHTML(item.name)}</div>
+            <div class="shop-card-desc">${escapeHTML(item.desc)}</div>
+            <div class="shop-card-price">${item.price.toLocaleString('vi-VN')} ✨ Công đức</div>
+            ${actionBtnHtml}
+          </div>
+        `;
+      });
+
+      container.innerHTML = html;
+    }
+
+    window.shopBuyItem = function(itemId) {
+      const item = SHOP_ITEMS.find(i => i.id === itemId);
+      if (!item) return;
+      if (meritScore < item.price) {
+        addMerit(0, "Chưa đủ công đức để mua vật phẩm này! 🙏");
+        return;
+      }
+
+      meritScore -= item.price;
+      localStorage.setItem('chua_merit_score', meritScore);
+      document.getElementById('merit-count').innerText = meritScore;
+
+      if (!purchasedItems.includes(itemId)) {
+        purchasedItems.push(itemId);
+        localStorage.setItem('chua_purchased_items', JSON.stringify(purchasedItems));
+      }
+
+      // Tự động mặc lên người
+      if (item.cat === 'set') {
+        myEquipped = { set: item.id };
+      } else {
+        delete myEquipped.set; // Tháo set nếu mặc lẻ
+        myEquipped[item.cat] = item.id;
+      }
+      localStorage.setItem('chua_equipped_items', JSON.stringify(myEquipped));
+
+      if (myChar && myChar.equip) myChar.equip(myEquipped);
+      broadcastMyState(true);
+      syncLeaderboard(true, "Mua " + item.name);
+      SoundFX.playBell();
+
+      const el = document.createElement('div');
+      el.className = 'floating-merit';
+      el.innerText = `Đã sở hữu & trang bị ${item.name}! ✨`;
+      document.body.appendChild(el);
+      setTimeout(() => el.remove(), 1600);
+
+      renderShop();
+      renderLeaderboard();
+    };
+
+    window.shopEquipItem = function(itemId) {
+      const item = SHOP_ITEMS.find(i => i.id === itemId);
+      if (!item) return;
+
+      if (item.cat === 'set') {
+        myEquipped = { set: item.id };
+      } else {
+        delete myEquipped.set;
+        myEquipped[item.cat] = item.id;
+      }
+      localStorage.setItem('chua_equipped_items', JSON.stringify(myEquipped));
+
+      if (myChar && myChar.equip) myChar.equip(myEquipped);
+      broadcastMyState(true);
+      SoundFX.playMo(0.4);
+
+      renderShop();
+    };
+
+    window.shopUnequipSlot = function(cat) {
+      if (cat === 'set') {
+        delete myEquipped.set;
+      } else {
+        delete myEquipped[cat];
+      }
+      localStorage.setItem('chua_equipped_items', JSON.stringify(myEquipped));
+
+      if (myChar && myChar.equip) myChar.equip(myEquipped);
+      broadcastMyState(true);
+      SoundFX.playMo(0.3);
+
+      renderShop();
+    };
+
+    const shopModal = document.getElementById('shop-modal');
+    function openShop() {
+      if (shopModal) {
+        shopModal.style.display = 'flex';
+        renderShop();
+        SoundFX.playMo(0.35);
+      }
+    }
+
+    function closeShop() {
+      if (shopModal) shopModal.style.display = 'none';
+    }
+
+    function toggleShop() {
+      if (shopModal) {
+        if (shopModal.style.display === 'none' || !shopModal.style.display) {
+          openShop();
+        } else {
+          closeShop();
+        }
+      }
+    }
 
     document.getElementById('btn-login').addEventListener('click', () => {
       const inputVal = document.getElementById('username-input').value.trim();
@@ -2796,6 +3555,7 @@
 
       myChar = createStickCharacter(myName, true);
       myChar.setMerit(meritScore);
+      if (myChar.equip) myChar.equip(myEquipped);
       myChar.root.position.set(myState.x, 0, myState.z);
       scene.add(myChar.root);
 
@@ -2808,14 +3568,24 @@
     document.getElementById('btn-sit').addEventListener('click', toggleSitMeditation);
     document.getElementById('btn-bow').addEventListener('click', performBow);
 
+    let lastMoTime = 0;
     document.getElementById('btn-mo').addEventListener('click', () => {
+      const now = Date.now();
+      if (now - lastMoTime < 1000) return; // Delay đúng 1s
+      lastMoTime = now;
       SoundFX.playMo();
-      addMerit(1, "+1 Công Đức Gõ Mõ 🪵");
+      addMerit(1, "+1 Công Đức Gõ Mõ 🪵"); // Đúng 1 điểm
+      triggerBtnCooldown('btn-mo', 1000);
     });
 
+    let lastBellTime = 0;
     document.getElementById('btn-bell').addEventListener('click', () => {
+      const now = Date.now();
+      if (now - lastBellTime < 3000) return; // Delay đúng 3s
+      lastBellTime = now;
       SoundFX.playBell();
-      addMerit(2, "Tiếng Chuông Tỉnh Thức 🔔");
+      addMerit(3, "+3 Công Đức Thỉnh Chuông 🔔"); // Đúng 3 điểm
+      triggerBtnCooldown('btn-bell', 3000);
     });
 
     const chatInput = document.getElementById('chat-input');
@@ -2840,7 +3610,6 @@
     document.querySelectorAll('.chant-pill').forEach(btn => {
       btn.addEventListener('click', () => {
         sendChatMessage(btn.getAttribute('data-msg'));
-        addMerit(1, "+1 Công Đức Niệm Phật 🙏");
       });
     });
 
