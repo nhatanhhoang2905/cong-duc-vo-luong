@@ -647,6 +647,206 @@
       filter: brightness(1.1);
     }
 
+    /* Nút & Widget Nhạc Nền YouTube */
+    .hud-music-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+    .hud-music-btn {
+      background: rgba(35, 10, 6, 0.88);
+      border: 1px solid rgba(212, 175, 55, 0.55);
+      color: #ffd700;
+      padding: 4px 11px;
+      border-radius: 20px;
+      font-size: 12px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      white-space: nowrap;
+      user-select: none;
+    }
+    .hud-music-btn:hover {
+      background: rgba(65, 22, 14, 0.95);
+      border-color: #ffd700;
+      transform: translateY(-1px);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.45);
+    }
+    .hud-music-btn.is-playing {
+      background: linear-gradient(135deg, #ffd700, #c59316);
+      color: #240804;
+      border-color: #ffffff;
+      box-shadow: 0 0 14px rgba(255, 215, 0, 0.65);
+      animation: musicPulse 2.4s infinite ease-in-out;
+    }
+    @keyframes musicPulse {
+      0%, 100% { box-shadow: 0 0 8px rgba(255, 215, 0, 0.4); }
+      50% { box-shadow: 0 0 18px rgba(255, 215, 0, 0.9); }
+    }
+    .hud-music-slider-popover {
+      position: absolute;
+      top: calc(100% + 8px);
+      left: 0;
+      background: rgba(18, 5, 3, 0.94);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--gold-border);
+      border-radius: 12px;
+      padding: 7px 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(-4px);
+      transition: all 0.2s ease;
+      z-index: 100;
+    }
+    .hud-music-wrapper:hover .hud-music-slider-popover,
+    .hud-music-slider-popover:hover {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+    .hud-music-slider-popover .vol-icon {
+      font-size: 13px;
+    }
+    .hud-music-slider-popover input[type="range"] {
+      width: 85px;
+      accent-color: #ffd700;
+      cursor: pointer;
+      height: 4px;
+    }
+    .hud-music-slider-popover .vol-label {
+      font-size: 11px;
+      color: #ffd700;
+      font-weight: 600;
+      min-width: 28px;
+    }
+
+    /* Mini Player Nhạc Thiền YouTube góc dưới phải */
+    .hud-music-player-card {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 285px;
+      background: rgba(18, 5, 3, 0.94);
+      backdrop-filter: blur(12px);
+      border: 1px solid var(--gold-border);
+      border-radius: 14px;
+      box-shadow: 0 10px 35px rgba(0, 0, 0, 0.8), 0 0 18px rgba(255, 215, 0, 0.25);
+      z-index: 85;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      overflow: hidden;
+      font-family: inherit;
+    }
+    .hud-music-player-card.is-minimized {
+      width: 200px;
+    }
+    .hud-music-player-card.is-minimized .music-card-body {
+      display: none;
+    }
+    .music-card-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 8px 12px;
+      background: linear-gradient(90deg, rgba(65, 22, 12, 0.95), rgba(30, 8, 4, 0.95));
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      cursor: pointer;
+      user-select: none;
+    }
+    .music-card-title {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      color: #ffd700;
+      font-size: 11.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+    }
+    .music-card-actions {
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .music-card-min-btn {
+      background: transparent;
+      border: none;
+      color: #ffd700;
+      font-size: 14px;
+      font-weight: bold;
+      cursor: pointer;
+      padding: 0 4px;
+      line-height: 1;
+      opacity: 0.85;
+      transition: opacity 0.2s;
+    }
+    .music-card-min-btn:hover {
+      opacity: 1;
+      transform: scale(1.1);
+    }
+    .music-card-body {
+      padding: 8px;
+    }
+    .yt-iframe-responsive {
+      position: relative;
+      width: 100%;
+      height: 140px;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #000;
+      border: 1px solid rgba(212, 175, 55, 0.25);
+    }
+    .yt-iframe-responsive iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+      display: block;
+    }
+    .music-card-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      margin-top: 8px;
+    }
+    .music-play-pause-btn {
+      background: linear-gradient(135deg, #ffd700, #c59316);
+      color: #240804;
+      border: none;
+      padding: 5px 11px;
+      border-radius: 14px;
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: all 0.2s ease;
+      white-space: nowrap;
+    }
+    .music-play-pause-btn:hover {
+      filter: brightness(1.12);
+      transform: scale(1.03);
+    }
+    .music-card-vol {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 11px;
+      color: #ffd700;
+    }
+    .music-card-vol input[type="range"] {
+      width: 65px;
+      accent-color: #ffd700;
+      cursor: pointer;
+      height: 3px;
+    }
+
     /* Nút Đăng Xuất / Đổi Tài Khoản */
     .hud-logout-btn {
       background: rgba(35, 10, 6, 0.85);
@@ -1470,6 +1670,8 @@
   <!-- Three.js & OrbitControls -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <!-- YouTube IFrame API cho Nhạc Nền Thiền Tịnh Tâm -->
+  <script src="https://www.youtube.com/iframe_api"></script>
 </head>
 <body>
 
@@ -1521,6 +1723,20 @@
     <div class="temple-header-card">
       <span class="temple-title">☸ Đại Hùng Bảo Điện</span>
       <span class="online-badge" id="online-counter">1 đồng tu</span>
+
+      <!-- Nút điều khiển Nhạc Nền YouTube -->
+      <div class="hud-music-wrapper">
+        <button class="hud-music-btn" id="btn-toggle-music" title="Bật / Tắt Nhạc Thiền Tịnh Tâm (YouTube: xe1jG6IQvUY)">
+          <span class="music-note-icon">🎵</span>
+          <span class="music-btn-text" id="music-btn-text">Nhạc Thiền</span>
+        </button>
+        <div class="hud-music-slider-popover">
+          <span class="vol-icon">🔉</span>
+          <input type="range" id="music-volume-slider" min="0" max="100" value="45" title="Âm lượng nhạc thiền" />
+          <span class="vol-label" id="music-volume-txt">45%</span>
+        </div>
+      </div>
+
       <button class="hud-shop-trigger-btn" id="btn-open-shop" title="Bảo Điện Phước Phẩm - Mua Trang Phục (Phím P)">
         🛍️ Phước Phẩm
       </button>
@@ -1880,45 +2096,108 @@
     // =========================================================================
     const SoundFX = {
       ctx: null,
+      moBuffers: [],
       init() {
         if (!this.ctx) {
           const AudioCtx = window.AudioContext || window.webkitAudioContext;
           this.ctx = new AudioCtx();
         }
         if (this.ctx.state === 'suspended') this.ctx.resume();
+        this.initMoAcoustics();
+      },
+      initMoAcoustics() {
+        if (this.moBuffers.length > 0 || !this.ctx) return;
+        const sampleRate = this.ctx.sampleRate || 44100;
+        const duration = 0.38;
+        const numSamples = Math.floor(sampleRate * duration);
+
+        // 3 biến thể âm mõ gỗ mít cổ truyền với tần số khoang rỗng Helmholtz khác nhau nhẹ
+        const baseFrequencies = [308, 314, 320];
+
+        baseFrequencies.forEach(f0 => {
+          const buffer = this.ctx.createBuffer(1, numSamples, sampleRate);
+          const data = buffer.getChannelData(0);
+
+          for (let i = 0; i < numSamples; i++) {
+            const t = i / sampleRate;
+
+            // 1. Tiếng cộc va chạm dùi gỗ vào thân mõ (Impact click < 14ms)
+            let impact = 0;
+            if (t < 0.014) {
+              const env = Math.exp(-t * 550);
+              const clickFreq = 1650 * Math.exp(-t * 280);
+              const noise = (Math.random() * 2 - 1) * 0.35;
+              impact = (Math.sin(2 * Math.PI * clickFreq * t) + noise) * env * 0.85;
+            }
+
+            // 2. Độ cộng hưởng khoang rỗng của Mõ (Helmholtz cavity resonance)
+            // Khi dùi đập, áp lực nén gỗ làm cao độ bắt đầu cao hơn một chút rồi ổn định
+            const bodyPitch = f0 * (1 + 0.16 * Math.exp(-t * 85));
+            const bodyEnv = Math.exp(-t * 16.5);
+            const body = Math.sin(2 * Math.PI * bodyPitch * t) * bodyEnv * 0.78;
+
+            // 3. Các họa âm vách gỗ già (Wood shell resonances)
+            const h1Pitch = f0 * 1.88; // Bậc 1: ~585Hz
+            const h1Env = Math.exp(-t * 24);
+            const h1 = Math.sin(2 * Math.PI * h1Pitch * t) * h1Env * 0.32;
+
+            const h2Pitch = f0 * 2.91; // Bậc 2: ~910Hz
+            const h2Env = Math.exp(-t * 42);
+            const h2 = Math.sin(2 * Math.PI * h2Pitch * t) * h2Env * 0.16;
+
+            const h3Pitch = f0 * 4.42; // Bậc 3: ~1380Hz
+            const h3Env = Math.exp(-t * 75);
+            const h3 = Math.sin(2 * Math.PI * h3Pitch * t) * h3Env * 0.07;
+
+            // 4. Âm vang nhẹ nơi chánh điện (Spacious temple reflection tail)
+            let roomTail = 0;
+            if (t > 0.03) {
+              const tailEnv = Math.exp(-(t - 0.03) * 12);
+              roomTail = Math.sin(2 * Math.PI * f0 * 0.95 * t) * tailEnv * 0.08;
+            }
+
+            data[i] = impact + body + h1 + h2 + h3 + roomTail;
+          }
+
+          // Chuẩn hóa biên độ (Normalize)
+          let peak = 0;
+          for (let i = 0; i < numSamples; i++) {
+            if (Math.abs(data[i]) > peak) peak = Math.abs(data[i]);
+          }
+          if (peak > 0) {
+            for (let i = 0; i < numSamples; i++) {
+              data[i] = (data[i] / peak) * 0.96;
+            }
+          }
+
+          this.moBuffers.push(buffer);
+        });
       },
       playMo(volume = 0.9) {
         this.init();
-        const t = this.ctx.currentTime;
-        const osc = this.ctx.createOscillator();
-        const clickOsc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
+        if (this.moBuffers.length === 0) return;
+
+        // Chọn ngẫu nhiên 1 trong 3 mẫu mõ để âm thanh sống động, tự nhiên như gõ thật
+        const buf = this.moBuffers[Math.floor(Math.random() * this.moBuffers.length)];
+        const source = this.ctx.createBufferSource();
+        source.buffer = buf;
+
+        // Pitch micro-variation nhẹ (±1.5%) như lực gõ tay người
+        source.playbackRate.value = 0.985 + Math.random() * 0.03;
+
+        // Bộ lọc ấm (Warm lowpass filter để âm thanh trầm ấm như mõ gỗ thật)
         const filter = this.ctx.createBiquadFilter();
+        filter.type = 'lowpass';
+        filter.frequency.value = 3400;
 
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(520, t);
-        osc.frequency.exponentialRampToValueAtTime(165, t + 0.11);
+        const gain = this.ctx.createGain();
+        gain.gain.value = volume;
 
-        clickOsc.type = 'triangle';
-        clickOsc.frequency.setValueAtTime(1150, t);
-        clickOsc.frequency.exponentialRampToValueAtTime(220, t + 0.03);
-
-        filter.type = 'bandpass';
-        filter.frequency.setValueAtTime(480, t);
-        filter.Q.setValueAtTime(3.5, t);
-
-        gain.gain.setValueAtTime(volume, t);
-        gain.gain.exponentialRampToValueAtTime(0.001, t + 0.14);
-
-        osc.connect(filter);
-        clickOsc.connect(filter);
+        source.connect(filter);
         filter.connect(gain);
         gain.connect(this.ctx.destination);
 
-        osc.start(t);
-        clickOsc.start(t);
-        osc.stop(t + 0.15);
-        clickOsc.stop(t + 0.04);
+        source.start();
       },
       playBell() {
         this.init();
@@ -2677,6 +2956,8 @@
         rightArmPivot,
         leftLegPivot,
         rightLegPivot,
+        leftFoot,
+        rightFoot,
         labelEl,
         setName(newName) {
           nameTextEl.textContent = newName;
@@ -2879,16 +3160,18 @@
       const blend = Math.min(1, dt * 10);
 
       let targetPelvisY = 0.75;
-      let targetTorsoX = 0, targetTorsoZ = 0;
+      let targetPelvisZ = 0;
+      let targetTorsoX = 0, targetTorsoY = 0, targetTorsoZ = 0;
       let targetHeadX = 0;
       let targetLArmX = 0, targetLArmZ = 0.14;
       let targetRArmX = 0, targetRArmZ = -0.14;
       let targetLLegX = 0, targetLLegZ = 0;
       let targetRLegX = 0, targetRLegZ = 0;
+      let targetLFootX = 0, targetRFootX = 0;
 
       if (state.isSitting) {
         targetPelvisY = 0.36;
-        targetTorsoX = Math.sin(time * 1.8) * 0.03;
+        targetTorsoX = Math.sin(time * 1.8) * 0.025;
         targetHeadX = 0.08;
 
         targetLLegX = -1.35;
@@ -2913,21 +3196,29 @@
         targetRArmZ = 0.42;
 
       } else if (state.isMoving) {
-        const walkSpeed = 9.5;
+        const walkSpeed = 8.4;
         const swing = Math.sin(time * walkSpeed);
-        const bounce = Math.abs(Math.cos(time * walkSpeed)) * 0.07;
+        const bounce = Math.abs(Math.cos(time * walkSpeed)) * 0.052;
 
         targetPelvisY = 0.75 + bounce;
-        targetTorsoX = 0.08;
-        targetTorsoZ = Math.cos(time * walkSpeed) * 0.04;
+        targetPelvisZ = Math.sin(time * walkSpeed) * 0.035; // Nhấp nhô hông tự nhiên
+        targetTorsoX = 0.06; // Hơi cúi nhẹ về phía trước tạo đà bước
+        targetTorsoY = -swing * 0.075; // Thân trên vặn nhẹ đối xứng theo sải tay
+        targetTorsoZ = Math.cos(time * walkSpeed) * 0.035;
 
-        targetLLegX = swing * 0.65;
-        targetRLegX = -swing * 0.65;
+        targetLLegX = swing * 0.58;
+        targetRLegX = -swing * 0.58;
 
-        targetLArmX = -swing * 0.55;
-        targetRArmX = swing * 0.55;
-        targetLArmZ = 0.12;
-        targetRArmZ = -0.12;
+        // Bàn chân nhấc và gập tự nhiên theo chu kỳ bước
+        targetLFootX = swing < 0 ? -swing * 0.32 : 0;
+        targetRFootX = swing > 0 ? swing * 0.32 : 0;
+
+        targetLArmX = -swing * 0.48;
+        targetRArmX = swing * 0.48;
+        targetLArmZ = 0.14 + Math.abs(swing) * 0.04;
+        targetRArmZ = -0.14 - Math.abs(swing) * 0.04;
+
+        targetHeadX = -0.02 + Math.sin(time * walkSpeed * 2) * 0.015;
 
       } else {
         const breath = Math.sin(time * 2.2);
@@ -2938,7 +3229,9 @@
       }
 
       char.pelvis.position.y = lerp(char.pelvis.position.y, targetPelvisY, blend);
+      char.pelvis.rotation.z = lerp(char.pelvis.rotation.z || 0, targetPelvisZ, blend);
       char.torsoPivot.rotation.x = lerp(char.torsoPivot.rotation.x, targetTorsoX, blend);
+      char.torsoPivot.rotation.y = lerp(char.torsoPivot.rotation.y, targetTorsoY, blend);
       char.torsoPivot.rotation.z = lerp(char.torsoPivot.rotation.z, targetTorsoZ, blend);
       char.headPivot.rotation.x = lerp(char.headPivot.rotation.x, targetHeadX, blend);
 
@@ -2951,6 +3244,9 @@
       char.leftLegPivot.rotation.z = lerp(char.leftLegPivot.rotation.z, targetLLegZ, blend);
       char.rightLegPivot.rotation.x = lerp(char.rightLegPivot.rotation.x, targetRLegX, blend);
       char.rightLegPivot.rotation.z = lerp(char.rightLegPivot.rotation.z, targetRLegZ, blend);
+
+      if (char.leftFoot) char.leftFoot.rotation.x = lerp(char.leftFoot.rotation.x, targetLFootX, blend);
+      if (char.rightFoot) char.rightFoot.rotation.x = lerp(char.rightFoot.rotation.x, targetRFootX, blend);
     }
 
     const tempProjVec = new THREE.Vector3();
@@ -3152,12 +3448,15 @@
     // 7. ĐỒNG BỘ MULTIPLAYER SIÊU MƯỢT QUA FIREBASE REALTIME DATABASE
     // =========================================================================
     let lastSyncedString = "";
-    const myPlayerRef = ref(rtdb, `players/${myId}`);
+    let myPlayerRef = ref(rtdb, `players/${myId}`);
+    let realtimeListenersInitialized = false;
 
     async function broadcastMyState(force = false, chatMsg = null) {
       if (!isEntered) return;
 
       const currentPayload = {
+        userId: myId,
+        userKey: currentUserKey || normalizeUserKey(myName),
         name: myName,
         merit: Number(meritScore) || 0,
         equipped: myEquipped,
@@ -3235,8 +3534,13 @@
     }
 
     function initRealtimeListeners() {
+      if (realtimeListenersInitialized) return;
+      realtimeListenersInitialized = true;
+
       // Tự động xóa nhân vật ngay lập tức trên server khi người chơi đóng tab hoặc rớt mạng
-      onDisconnect(myPlayerRef).remove();
+      try {
+        onDisconnect(myPlayerRef).remove();
+      } catch(e) {}
 
       // Lắng nghe toàn bộ danh sách đồng tu trong phòng qua WebSocket
       const allPlayersRef = ref(rtdb, 'players');
@@ -3247,7 +3551,26 @@
         const activeIds = new Set();
 
         Object.entries(playersObj).forEach(([pid, data]) => {
-          if (pid === myId || !data) return;
+          if (!data) return;
+
+          // Kiểm tra nghiêm ngặt: Tuyệt đối không tạo bản sao bóng ma cho chính người chơi
+          const isSelf = (pid === myId) || 
+                         (data.userId && data.userId === myId) || 
+                         (currentUserKey && data.userKey && data.userKey === currentUserKey) || 
+                         (myName && data.name && data.name.trim().toLowerCase() === myName.trim().toLowerCase());
+
+          if (isSelf) {
+            // Nếu pid này khác myId hiện tại, dọn sạch slot bóng ma cũ trên RTDB
+            if (pid !== myId) {
+              try { set(ref(rtdb, `players/${pid}`), null); } catch(e) {}
+              if (remotePlayers.has(pid)) {
+                const ghost = remotePlayers.get(pid);
+                if (ghost && ghost.char) ghost.char.dispose();
+                remotePlayers.delete(pid);
+              }
+            }
+            return;
+          }
 
           // Bỏ qua nếu treo quá 60s
           if (data.updatedAt && now - data.updatedAt > 60000) return;
@@ -3780,11 +4103,25 @@
           }
 
           // Đăng nhập thành công -> Khôi phục dữ liệu từ Cloud Firebase
+          const oldId = myId;
           myId = accData.userId || myId;
           myName = accData.username || username;
+          currentUserKey = userKey;
           meritScore = Number(accData.merit) || 0;
           purchasedItems = Array.isArray(accData.purchasedItems) ? accData.purchasedItems : [];
           myEquipped = accData.equipped || {};
+
+          // Dọn dẹp slot ID cũ nếu có khác biệt để tránh bóng ma clone
+          if (oldId !== myId) {
+            try { set(ref(rtdb, `players/${oldId}`), null); } catch(e) {}
+            if (remotePlayers.has(oldId)) {
+              const oldGhost = remotePlayers.get(oldId);
+              if (oldGhost && oldGhost.char) oldGhost.char.dispose();
+              remotePlayers.delete(oldId);
+            }
+          }
+          myPlayerRef = ref(rtdb, `players/${myId}`);
+          try { onDisconnect(myPlayerRef).remove(); } catch(e) {}
 
           // Lưu vào local cache
           localStorage.setItem('chua_auth_user', myName);
@@ -3820,6 +4157,10 @@
           await set(accountRef, newAccountData);
 
           myName = username;
+          currentUserKey = userKey;
+          myPlayerRef = ref(rtdb, `players/${myId}`);
+          try { onDisconnect(myPlayerRef).remove(); } catch(e) {}
+
           localStorage.setItem('chua_auth_user', myName);
           localStorage.setItem('chua_auth_pass', password);
           localStorage.setItem('chua_user_name', myName);
@@ -3835,6 +4176,209 @@
       }
     });
 
+    // =========================================================================
+    // HỆ THỐNG NHẠC NỀN THIỀN TỊNH TÂM (YOUTUBE BGM API)
+    // Video: https://www.youtube.com/watch?v=xe1jG6IQvUY
+    // =========================================================================
+    const YOUTUBE_VIDEO_ID = 'xe1jG6IQvUY';
+    let ytBgmPlayer = null;
+    let isBgmPlaying = false;
+    let bgmEnabled = localStorage.getItem('chua_bgm_enabled') !== 'false';
+    let bgmVolume = parseInt(localStorage.getItem('chua_bgm_volume') || '50', 10);
+
+    const btnToggleMusic = document.getElementById('btn-toggle-music');
+    const musicBtnText = document.getElementById('music-btn-text');
+    const musicVolumeSlider = document.getElementById('music-volume-slider');
+    const musicVolumeTxt = document.getElementById('music-volume-txt');
+
+    const hudMusicCard = document.getElementById('hud-music-card');
+    const btnCardPlayPause = document.getElementById('btn-card-play-pause');
+    const cardMusicVolume = document.getElementById('card-music-volume');
+    const cardMusicVolTxt = document.getElementById('card-music-vol-txt');
+    const btnMinimizeMusic = document.getElementById('btn-minimize-music');
+    const musicCardHeaderToggle = document.getElementById('music-card-header-toggle');
+
+    if (musicVolumeSlider) musicVolumeSlider.value = bgmVolume;
+    if (musicVolumeTxt) musicVolumeTxt.innerText = `${bgmVolume}%`;
+    if (cardMusicVolume) cardMusicVolume.value = bgmVolume;
+    if (cardMusicVolTxt) cardMusicVolTxt.innerText = `${bgmVolume}%`;
+
+    function sendIframeCommand(func, args = []) {
+      const iframe = document.getElementById('yt-bgm-iframe');
+      if (iframe && iframe.contentWindow) {
+        try {
+          iframe.contentWindow.postMessage(JSON.stringify({
+            event: 'command',
+            func: func,
+            args: args
+          }), '*');
+        } catch(e) {}
+      }
+    }
+
+    function updateMusicUI(playing) {
+      isBgmPlaying = playing;
+      if (btnToggleMusic) {
+        if (playing) {
+          btnToggleMusic.classList.add('is-playing');
+          if (musicBtnText) musicBtnText.innerText = 'Đang Phát 🎶';
+        } else {
+          btnToggleMusic.classList.remove('is-playing');
+          if (musicBtnText) musicBtnText.innerText = 'Nhạc Thiền 🎵';
+        }
+      }
+      if (btnCardPlayPause) {
+        btnCardPlayPause.innerHTML = playing ? '⏸ Tạm Dừng' : '▶ Phát Nhạc';
+      }
+    }
+
+    function playBgm() {
+      bgmEnabled = true;
+      localStorage.setItem('chua_bgm_enabled', 'true');
+      updateMusicUI(true);
+
+      // Thử phát qua YouTube Iframe API
+      if (ytBgmPlayer && typeof ytBgmPlayer.playVideo === 'function') {
+        try { ytBgmPlayer.playVideo(); } catch(e) {}
+      }
+
+      // Phát trực tiếp qua postMessage tới iframe
+      sendIframeCommand('unMute');
+      sendIframeCommand('setVolume', [bgmVolume]);
+      sendIframeCommand('playVideo');
+
+      // Đảm bảo iframe có src nếu bị chặn
+      const iframe = document.getElementById('yt-bgm-iframe');
+      if (iframe && (!iframe.src || iframe.src.indexOf('xe1jG6IQvUY') === -1)) {
+        iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&playsinline=1&controls=1`;
+      }
+    }
+
+    function pauseBgm() {
+      bgmEnabled = false;
+      localStorage.setItem('chua_bgm_enabled', 'false');
+      updateMusicUI(false);
+
+      if (ytBgmPlayer && typeof ytBgmPlayer.pauseVideo === 'function') {
+        try { ytBgmPlayer.pauseVideo(); } catch(e) {}
+      }
+      sendIframeCommand('pauseVideo');
+    }
+
+    function toggleBgm() {
+      if (isBgmPlaying) {
+        pauseBgm();
+      } else {
+        playBgm();
+      }
+    }
+
+    function setBgmVolume(val) {
+      bgmVolume = Math.max(0, Math.min(100, val));
+      localStorage.setItem('chua_bgm_volume', bgmVolume);
+      if (musicVolumeSlider) musicVolumeSlider.value = bgmVolume;
+      if (musicVolumeTxt) musicVolumeTxt.innerText = `${bgmVolume}%`;
+      if (cardMusicVolume) cardMusicVolume.value = bgmVolume;
+      if (cardMusicVolTxt) cardMusicVolTxt.innerText = `${bgmVolume}%`;
+
+      if (ytBgmPlayer && typeof ytBgmPlayer.setVolume === 'function') {
+        try { ytBgmPlayer.setVolume(bgmVolume); } catch(e) {}
+      }
+      sendIframeCommand('setVolume', [bgmVolume]);
+    }
+
+    function initYTPlayer() {
+      if (ytBgmPlayer) return;
+      if (window.YT && window.YT.Player) {
+        try {
+          ytBgmPlayer = new YT.Player('yt-bgm-iframe', {
+            events: {
+              onReady: (event) => {
+                event.target.setVolume(bgmVolume);
+                if (bgmEnabled) {
+                  event.target.playVideo();
+                }
+              },
+              onStateChange: (event) => {
+                if (event.data === YT.PlayerState.PLAYING) {
+                  updateMusicUI(true);
+                } else if (event.data === YT.PlayerState.PAUSED) {
+                  updateMusicUI(false);
+                } else if (event.data === YT.PlayerState.ENDED) {
+                  event.target.playVideo(); // Lặp lại vô tận
+                }
+              }
+            }
+          });
+        } catch(err) {
+          console.warn("YouTube API init:", err);
+        }
+      }
+    }
+
+    // Đăng ký cho cả trường hợp API tải trước hoặc tải sau
+    const prevYTReady = window.onYouTubeIframeAPIReady;
+    window.onYouTubeIframeAPIReady = function() {
+      if (typeof prevYTReady === 'function') prevYTReady();
+      initYTPlayer();
+    };
+
+    let checkYTReadyCount = 0;
+    const checkYTInterval = setInterval(() => {
+      checkYTReadyCount++;
+      if (window.YT && window.YT.Player) {
+        clearInterval(checkYTInterval);
+        initYTPlayer();
+      }
+      if (checkYTReadyCount > 30) clearInterval(checkYTInterval);
+    }, 250);
+
+    // Gắn sự kiện các nút điều khiển
+    if (btnToggleMusic) {
+      btnToggleMusic.addEventListener('click', toggleBgm);
+    }
+    if (btnCardPlayPause) {
+      btnCardPlayPause.addEventListener('click', toggleBgm);
+    }
+    if (musicVolumeSlider) {
+      musicVolumeSlider.addEventListener('input', (e) => {
+        setBgmVolume(parseInt(e.target.value, 10));
+      });
+    }
+    if (cardMusicVolume) {
+      cardMusicVolume.addEventListener('input', (e) => {
+        setBgmVolume(parseInt(e.target.value, 10));
+      });
+    }
+
+    // Thu nhỏ / Phóng to card nhạc
+    let isMusicCardMinimized = false;
+    function toggleMinimizeMusicCard() {
+      isMusicCardMinimized = !isMusicCardMinimized;
+      if (hudMusicCard) {
+        hudMusicCard.classList.toggle('is-minimized', isMusicCardMinimized);
+      }
+      if (btnMinimizeMusic) {
+        btnMinimizeMusic.innerText = isMusicCardMinimized ? '□' : '_';
+      }
+    }
+    if (btnMinimizeMusic) {
+      btnMinimizeMusic.addEventListener('click', (e) => {
+        e.stopPropagation();
+        toggleMinimizeMusicCard();
+      });
+    }
+    if (musicCardHeaderToggle) {
+      musicCardHeaderToggle.addEventListener('click', toggleMinimizeMusicCard);
+    }
+
+    // Tự động kích hoạt âm thanh ngay khi người dùng click vào bất kỳ đâu trên trang
+    window.addEventListener('click', () => {
+      if (bgmEnabled && !isBgmPlaying) {
+        playBgm();
+      }
+    }, { once: true });
+
     function enterTempleSuccess() {
       document.getElementById('merit-count').innerText = meritScore;
       const overlay = document.getElementById('login-overlay');
@@ -3842,6 +4386,14 @@
       setTimeout(() => overlay.style.display = 'none', 500);
 
       SoundFX.playBell();
+
+      // Dọn sạch bất kỳ bóng ma clone nào trong remotePlayers nếu trùng với người chơi
+      for (const [pid, rp] of remotePlayers.entries()) {
+        if (pid === myId || (rp.target && rp.target.name && rp.target.name.trim().toLowerCase() === myName.trim().toLowerCase())) {
+          rp.char.dispose();
+          remotePlayers.delete(pid);
+        }
+      }
 
       if (!myChar) {
         myChar = createStickCharacter(myName, true);
@@ -3860,6 +4412,11 @@
       initRealtimeListeners();
       renderShop();
       renderLeaderboard();
+
+      // Tự động phát Nhạc Nền Thiền Tịnh Tâm (YouTube) nếu đang bật
+      if (bgmEnabled) {
+        playBgm();
+      }
     }
 
     // Đăng xuất / Đổi tài khoản
@@ -3874,6 +4431,8 @@
             await set(myPlayerRef, null);
           } catch(e) {}
         }
+
+        realtimeListenersInitialized = false;
 
         isEntered = false;
         const overlay = document.getElementById('login-overlay');
@@ -4073,5 +4632,36 @@
       renderer.setSize(window.innerWidth, window.innerHeight);
     });
   </script>
+
+  <!-- Widget Nhạc Thiền YouTube (Góc Dưới Phải) -->
+  <div class="hud-music-player-card" id="hud-music-card">
+    <div class="music-card-header" id="music-card-header-toggle">
+      <div class="music-card-title">
+        <span class="music-card-icon">🎶</span>
+        <span>Nhạc Cổ Điển Tĩnh Tâm</span>
+      </div>
+      <div class="music-card-actions">
+        <button class="music-card-min-btn" id="btn-minimize-music" title="Thu nhỏ / Mở rộng">_</button>
+      </div>
+    </div>
+    <div class="music-card-body" id="music-card-body">
+      <div class="yt-iframe-responsive">
+        <iframe id="yt-bgm-iframe"
+          src="https://www.youtube.com/embed/xe1jG6IQvUY?enablejsapi=1&autoplay=1&loop=1&playlist=xe1jG6IQvUY&playsinline=1&controls=1"
+          title="Nhạc Cổ Điển Trung Quốc Bất Hủ Hay Nhất Mọi Thời Đại"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen>
+        </iframe>
+      </div>
+      <div class="music-card-controls">
+        <button class="music-play-pause-btn" id="btn-card-play-pause">▶ Phát Nhạc</button>
+        <div class="music-card-vol">
+          <span>🔉</span>
+          <input type="range" id="card-music-volume" min="0" max="100" value="45" title="Âm lượng nhạc nền" />
+          <span id="card-music-vol-txt">45%</span>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 </html>
