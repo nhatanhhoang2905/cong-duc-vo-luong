@@ -847,6 +847,237 @@
       height: 3px;
     }
 
+    /* Nút Đổi Video trên Card Nhạc */
+    .music-card-link-btn {
+      background: rgba(255, 215, 0, 0.15);
+      border: 1px solid rgba(255, 215, 0, 0.45);
+      color: #ffd700;
+      font-size: 10px;
+      font-weight: 700;
+      padding: 2px 7px;
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      display: flex;
+      align-items: center;
+      gap: 3px;
+    }
+    .music-card-link-btn:hover {
+      background: #ffd700;
+      color: #240804;
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.6);
+      transform: translateY(-1px);
+    }
+
+    /* MODAL ĐỔI VIDEO REALTIME CHO TOÀN PHÒNG */
+    .hud-media-modal {
+      position: fixed;
+      inset: 0;
+      z-index: 220;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: auto;
+    }
+    .media-modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(8, 2, 1, 0.78);
+      backdrop-filter: blur(8px);
+      animation: fadeInBackdrop 0.25s ease forwards;
+    }
+    .media-modal-window {
+      position: relative;
+      width: 90%;
+      max-width: 520px;
+      background: linear-gradient(170deg, rgba(38, 12, 8, 0.96), rgba(18, 4, 2, 0.98));
+      border: 2px solid var(--gold-border);
+      border-radius: 20px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.95), 0 0 35px rgba(212, 175, 55, 0.35);
+      overflow: hidden;
+      animation: scaleUpModal 0.28s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      display: flex;
+      flex-direction: column;
+      z-index: 2;
+    }
+    .media-modal-header {
+      padding: 16px 22px;
+      background: linear-gradient(90deg, rgba(65, 22, 12, 0.95), rgba(30, 8, 4, 0.95));
+      border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .media-modal-header-left {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .media-modal-icon {
+      font-size: 26px;
+      filter: drop-shadow(0 0 6px rgba(255, 215, 0, 0.6));
+    }
+    .media-modal-header-left h3 {
+      margin: 0;
+      font-size: 16px;
+      color: #ffd700;
+      font-weight: 700;
+      letter-spacing: 0.5px;
+    }
+    .media-modal-header-left p {
+      margin: 3px 0 0 0;
+      font-size: 11.5px;
+      color: var(--text-muted);
+    }
+    .media-modal-close-btn {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(212, 175, 55, 0.4);
+      color: #ffd700;
+      font-size: 18px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.2s;
+    }
+    .media-modal-close-btn:hover {
+      background: #c0392b;
+      color: #fff;
+      border-color: #ff7b72;
+      transform: scale(1.08);
+    }
+    .media-modal-body {
+      padding: 20px 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .media-modal-desc {
+      margin: 0;
+      font-size: 12.5px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+    .media-modal-desc b {
+      color: #ffd700;
+    }
+    .media-input-box-wrapper {
+      display: flex;
+      gap: 8px;
+    }
+    .media-url-input {
+      flex: 1;
+      padding: 10px 14px;
+      background: rgba(10, 2, 1, 0.85);
+      border: 1.5px solid rgba(212, 175, 55, 0.4);
+      border-radius: 12px;
+      color: #ffd700;
+      font-size: 13px;
+      outline: none;
+      transition: all 0.2s;
+    }
+    .media-url-input:focus {
+      border-color: #ffd700;
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+      background: rgba(20, 5, 2, 0.95);
+    }
+    .btn-apply-media {
+      background: linear-gradient(135deg, #ffd700, #c59316);
+      color: #240804;
+      border: none;
+      padding: 10px 16px;
+      border-radius: 12px;
+      font-size: 13px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .btn-apply-media:hover {
+      filter: brightness(1.15);
+      transform: scale(1.03);
+      box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
+    }
+    .media-presets-title {
+      font-size: 12px;
+      color: #ffd700;
+      font-weight: 600;
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .media-presets-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+    .media-preset-btn {
+      background: rgba(30, 8, 4, 0.8);
+      border: 1px solid rgba(212, 175, 55, 0.35);
+      color: #e0d0b8;
+      padding: 8px 10px;
+      border-radius: 10px;
+      font-size: 11.5px;
+      cursor: pointer;
+      text-align: left;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+    }
+    .media-preset-btn:hover {
+      background: rgba(65, 22, 12, 0.95);
+      border-color: #ffd700;
+      color: #ffd700;
+      transform: translateY(-1px);
+    }
+    .media-sync-status-badge {
+      background: rgba(20, 70, 30, 0.4);
+      border: 1px solid rgba(76, 175, 80, 0.4);
+      color: #81c784;
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 11.5px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .media-sync-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #4caf50;
+      box-shadow: 0 0 6px #4caf50;
+      animation: pulseDot 1.5s infinite;
+    }
+    .media-modal-msg {
+      padding: 8px 12px;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 500;
+      text-align: center;
+    }
+    .media-modal-msg.error {
+      background: rgba(140, 25, 20, 0.85);
+      border: 1px solid #ff7b72;
+      color: #ffdcd7;
+    }
+    .media-modal-msg.success {
+      background: rgba(25, 110, 40, 0.85);
+      border: 1px solid #7ee787;
+      color: #d2fed7;
+    }
+
     /* Nút Đăng Xuất / Đổi Tài Khoản */
     .hud-logout-btn {
       background: rgba(35, 10, 6, 0.85);
@@ -1904,6 +2135,58 @@
       <!-- Danh sách vật phẩm dạng Grid -->
       <div class="shop-items-container" id="shop-items-container">
         <!-- Render động qua JavaScript -->
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL ĐỔI VIDEO / NHẠC CHÁNH ĐIỆN REALTIME CHO TOÀN PHÒNG -->
+  <div class="hud-media-modal" id="media-modal" style="display: none;">
+    <div class="media-modal-backdrop" id="media-modal-backdrop"></div>
+    <div class="media-modal-window">
+      <div class="media-modal-header">
+        <div class="media-modal-header-left">
+          <span class="media-modal-icon">📺</span>
+          <div>
+            <h3>ĐỔI VIDEO / NHẠC CHÁNH ĐIỆN</h3>
+            <p>Đồng bộ thời gian thực cho tất cả đồng tu trong phòng</p>
+          </div>
+        </div>
+        <button class="media-modal-close-btn" id="btn-close-media-modal" title="Đóng (Esc)">&times;</button>
+      </div>
+      <div class="media-modal-body">
+        <p class="media-modal-desc">
+          Dán bất kỳ link YouTube hoặc ID video vào ô bên dưới. Mọi người trong chánh điện sẽ <b>xem cùng một video và khớp chính xác từng giây theo thời gian thực</b>!
+        </p>
+
+        <div class="media-input-box-wrapper">
+          <input type="text" class="media-url-input" id="input-media-url" placeholder="Ví dụ: https://www.youtube.com/watch?v=xe1jG6IQvUY" />
+          <button class="btn-apply-media" id="btn-submit-media">Áp Dụng Cho Toàn Phòng ☸</button>
+        </div>
+
+        <div class="media-modal-msg" id="media-modal-msg" style="display: none;"></div>
+
+        <div>
+          <div class="media-presets-title">✨ Hoặc chọn nhanh danh tác Phật giáo:</div>
+          <div class="media-presets-grid">
+            <button class="media-preset-btn" data-id="xe1jG6IQvUY" data-title="Nhạc Cổ Điển Tĩnh Tâm Thư Giãn">
+              <span>🎶</span> Nhạc Cổ Điển Tĩnh Tâm
+            </button>
+            <button class="media-preset-btn" data-id="8z9O_3N0T6A" data-title="Chú Đại Bi Tiếng Phạn - Mầu Nhiệm">
+              <span>☸</span> Chú Đại Bi Tiếng Phạn
+            </button>
+            <button class="media-preset-btn" data-id="2b9F4rI9_YQ" data-title="Niệm Nam Mô A Di Đà Phật">
+              <span>🙏</span> Niệm Phật A Di Đà
+            </button>
+            <button class="media-preset-btn" data-id="y7e-GC6oGhg" data-title="Nhạc Thiền Sáo Trúc Thanh Tịnh">
+              <span>🎋</span> Sáo Trúc Thiền Tịnh
+            </button>
+          </div>
+        </div>
+
+        <div class="media-sync-status-badge">
+          <span class="media-sync-dot"></span>
+          <span>Đang kết nối Realtime Watch Party qua Firebase: Mọi người đều xem đồng bộ.</span>
+        </div>
       </div>
     </div>
   </div>
@@ -4177,10 +4460,12 @@
     });
 
     // =========================================================================
-    // HỆ THỐNG NHẠC NỀN THIỀN TỊNH TÂM (YOUTUBE BGM API)
-    // Video: https://www.youtube.com/watch?v=xe1jG6IQvUY
+    // HỆ THỐNG XEM CHUNG VIDEO REALTIME & ĐỔI LINK YOUTUBE (FIREBASE RTDB)
     // =========================================================================
-    const YOUTUBE_VIDEO_ID = 'xe1jG6IQvUY';
+    let currentVideoId = 'xe1jG6IQvUY';
+    let currentVideoTitle = 'Nhạc Cổ Điển Tĩnh Tâm Thư Giãn';
+    let isBroadcastingMedia = false;
+
     let ytBgmPlayer = null;
     let isBgmPlaying = false;
     let bgmEnabled = localStorage.getItem('chua_bgm_enabled') !== 'false';
@@ -4192,11 +4477,20 @@
     const musicVolumeTxt = document.getElementById('music-volume-txt');
 
     const hudMusicCard = document.getElementById('hud-music-card');
+    const musicCardTitleText = document.getElementById('music-card-title-text');
     const btnCardPlayPause = document.getElementById('btn-card-play-pause');
     const cardMusicVolume = document.getElementById('card-music-volume');
     const cardMusicVolTxt = document.getElementById('card-music-vol-txt');
     const btnMinimizeMusic = document.getElementById('btn-minimize-music');
     const musicCardHeaderToggle = document.getElementById('music-card-header-toggle');
+    const btnOpenChangeMedia = document.getElementById('btn-open-change-media');
+
+    const mediaModal = document.getElementById('media-modal');
+    const mediaModalBackdrop = document.getElementById('media-modal-backdrop');
+    const btnCloseMediaModal = document.getElementById('btn-close-media-modal');
+    const inputMediaUrl = document.getElementById('input-media-url');
+    const btnSubmitMedia = document.getElementById('btn-submit-media');
+    const mediaModalMsg = document.getElementById('media-modal-msg');
 
     if (musicVolumeSlider) musicVolumeSlider.value = bgmVolume;
     if (musicVolumeTxt) musicVolumeTxt.innerText = `${bgmVolume}%`;
@@ -4232,29 +4526,24 @@
       }
     }
 
-    function playBgm() {
+    function playBgm(broadcast = true) {
       bgmEnabled = true;
       localStorage.setItem('chua_bgm_enabled', 'true');
       updateMusicUI(true);
 
-      // Thử phát qua YouTube Iframe API
       if (ytBgmPlayer && typeof ytBgmPlayer.playVideo === 'function') {
         try { ytBgmPlayer.playVideo(); } catch(e) {}
       }
-
-      // Phát trực tiếp qua postMessage tới iframe
       sendIframeCommand('unMute');
       sendIframeCommand('setVolume', [bgmVolume]);
       sendIframeCommand('playVideo');
 
-      // Đảm bảo iframe có src nếu bị chặn
-      const iframe = document.getElementById('yt-bgm-iframe');
-      if (iframe && (!iframe.src || iframe.src.indexOf('xe1jG6IQvUY') === -1)) {
-        iframe.src = `https://www.youtube.com/embed/${YOUTUBE_VIDEO_ID}?enablejsapi=1&autoplay=1&loop=1&playlist=${YOUTUBE_VIDEO_ID}&playsinline=1&controls=1`;
+      if (broadcast) {
+        broadcastMediaPlaybackState(true);
       }
     }
 
-    function pauseBgm() {
+    function pauseBgm(broadcast = true) {
       bgmEnabled = false;
       localStorage.setItem('chua_bgm_enabled', 'false');
       updateMusicUI(false);
@@ -4263,13 +4552,17 @@
         try { ytBgmPlayer.pauseVideo(); } catch(e) {}
       }
       sendIframeCommand('pauseVideo');
+
+      if (broadcast) {
+        broadcastMediaPlaybackState(false);
+      }
     }
 
     function toggleBgm() {
       if (isBgmPlaying) {
-        pauseBgm();
+        pauseBgm(true);
       } else {
-        playBgm();
+        playBgm(true);
       }
     }
 
@@ -4285,6 +4578,228 @@
         try { ytBgmPlayer.setVolume(bgmVolume); } catch(e) {}
       }
       sendIframeCommand('setVolume', [bgmVolume]);
+    }
+
+    // =========================================================================
+    // ĐỒNG BỘ REALTIME WATCH PARTY VỚI FIREBASE RTDB
+    // =========================================================================
+    const mediaRoomRef = ref(rtdb, 'temple_media');
+    let isMediaRoomInitialized = false;
+
+    function initMediaRoomSync() {
+      if (isMediaRoomInitialized) return;
+      isMediaRoomInitialized = true;
+
+      onValue(mediaRoomRef, (snapshot) => {
+        const data = snapshot.val();
+        if (!data) {
+          // Tạo bản ghi mặc định ban đầu nếu phòng chưa có
+          set(mediaRoomRef, {
+            videoId: 'xe1jG6IQvUY',
+            videoTitle: 'Nhạc Cổ Điển Tĩnh Tâm Thư Giãn',
+            isPlaying: true,
+            timestamp: 0,
+            updatedAt: Date.now(),
+            updatedBy: 'Chánh Điện'
+          });
+          return;
+        }
+
+        handleRemoteMediaSync(data);
+      });
+    }
+
+    function handleRemoteMediaSync(data) {
+      if (isBroadcastingMedia) return;
+
+      const targetId = data.videoId || 'xe1jG6IQvUY';
+      const targetTitle = data.videoTitle || 'Nhạc Chánh Điện';
+      const shouldPlay = !!data.isPlaying;
+      const now = Date.now();
+      let expectedTime = Number(data.timestamp) || 0;
+      if (shouldPlay && data.updatedAt) {
+        expectedTime += (now - data.updatedAt) / 1000;
+      }
+
+      currentVideoTitle = targetTitle;
+      if (musicCardTitleText) musicCardTitleText.innerText = targetTitle;
+
+      // 1. Trường hợp có đồng tu đổi sang bài / video khác
+      if (targetId !== currentVideoId) {
+        currentVideoId = targetId;
+        const startSec = Math.max(0, Math.floor(expectedTime));
+        const iframe = document.getElementById('yt-bgm-iframe');
+        if (iframe) {
+          iframe.src = `https://www.youtube.com/embed/${currentVideoId}?enablejsapi=1&autoplay=1&loop=1&playlist=${currentVideoId}&start=${startSec}&playsinline=1&controls=1`;
+        }
+        if (ytBgmPlayer && typeof ytBgmPlayer.loadVideoById === 'function') {
+          try {
+            ytBgmPlayer.loadVideoById({
+              videoId: currentVideoId,
+              startSeconds: startSec
+            });
+          } catch(e) {}
+        }
+        showMediaToast(`Đồng tu [${data.updatedBy || 'Ẩn danh'}] vừa đổi video: ${targetTitle}`);
+        updateMusicUI(shouldPlay);
+        return;
+      }
+
+      // 2. Trường hợp cùng video, đồng bộ trạng thái phát / tạm dừng
+      if (shouldPlay !== isBgmPlaying) {
+        if (shouldPlay) {
+          playBgm(false);
+        } else {
+          pauseBgm(false);
+        }
+      }
+
+      // 3. Khớp mốc thời gian (Seek) nếu bị lệch quá 3 giây
+      if (shouldPlay) {
+        let localTime = -1;
+        if (ytBgmPlayer && typeof ytBgmPlayer.getCurrentTime === 'function') {
+          try { localTime = ytBgmPlayer.getCurrentTime(); } catch(e) {}
+        }
+        if (localTime >= 0 && Math.abs(localTime - expectedTime) > 3) {
+          try {
+            ytBgmPlayer.seekTo(expectedTime, true);
+          } catch(e) {}
+        }
+        sendIframeCommand('seekTo', [expectedTime, true]);
+      }
+    }
+
+    async function broadcastMediaPlaybackState(playing) {
+      if (!isEntered) return;
+      isBroadcastingMedia = true;
+
+      let curSec = 0;
+      if (ytBgmPlayer && typeof ytBgmPlayer.getCurrentTime === 'function') {
+        try { curSec = ytBgmPlayer.getCurrentTime() || 0; } catch(e) {}
+      }
+
+      try {
+        await update(mediaRoomRef, {
+          isPlaying: playing,
+          timestamp: Number(curSec.toFixed(1)),
+          updatedAt: Date.now(),
+          updatedBy: myName
+        });
+      } catch(e) {
+        console.warn("Lỗi sync media:", e);
+      }
+
+      setTimeout(() => { isBroadcastingMedia = false; }, 600);
+    }
+
+    // =========================================================================
+    // XỬ LÝ ĐỔI LINK VIDEO YOUTUBE QUA MODAL
+    // =========================================================================
+    function extractYouTubeId(urlOrId) {
+      if (!urlOrId) return null;
+      const str = String(urlOrId).trim();
+      if (/^[a-zA-Z0-9_-]{11}$/.test(str)) {
+        return str;
+      }
+      const match = str.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=|live\/|shorts\/))([a-zA-Z0-9_-]{11})/);
+      return match ? match[1] : null;
+    }
+
+    function openMediaModal() {
+      if (mediaModal) {
+        mediaModal.style.display = 'flex';
+        clearMediaModalMsg();
+        if (inputMediaUrl) {
+          inputMediaUrl.value = '';
+          setTimeout(() => inputMediaUrl.focus(), 100);
+        }
+      }
+    }
+
+    function closeMediaModal() {
+      if (mediaModal) mediaModal.style.display = 'none';
+      clearMediaModalMsg();
+    }
+
+    function showMediaModalMsg(msg, isSuccess = false) {
+      if (!mediaModalMsg) return;
+      mediaModalMsg.innerText = msg;
+      mediaModalMsg.className = `media-modal-msg ${isSuccess ? 'success' : 'error'}`;
+      mediaModalMsg.style.display = 'block';
+    }
+
+    function clearMediaModalMsg() {
+      if (mediaModalMsg) mediaModalMsg.style.display = 'none';
+    }
+
+    function showMediaToast(text) {
+      const toast = document.createElement('div');
+      toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        left: 50%;
+        transform: translateX(-50%);
+        background: rgba(30, 8, 4, 0.95);
+        color: #ffd700;
+        border: 1px solid var(--gold-border);
+        box-shadow: 0 4px 20px rgba(0,0,0,0.8), 0 0 15px rgba(255,215,0,0.4);
+        padding: 9px 20px;
+        border-radius: 20px;
+        font-size: 13px;
+        font-weight: 700;
+        z-index: 300;
+        animation: floatUpFade 4s ease forwards;
+        pointer-events: none;
+      `;
+      toast.innerText = `📺 ${text}`;
+      document.body.appendChild(toast);
+      setTimeout(() => toast.remove(), 4000);
+    }
+
+    async function submitChangeMedia(targetInputId, customTitle = null) {
+      const vid = extractYouTubeId(targetInputId);
+      if (!vid) {
+        showMediaModalMsg('Đường dẫn YouTube không hợp lệ! Vui lòng dán link đầy đủ (ví dụ: https://www.youtube.com/watch?v=...) hoặc mã video 11 ký tự.', false);
+        return;
+      }
+
+      const finalTitle = customTitle || ('Video YouTube: ' + vid);
+      showMediaModalMsg('Đang cập nhật video cho toàn chánh điện...', true);
+
+      isBroadcastingMedia = true;
+      try {
+        await set(mediaRoomRef, {
+          videoId: vid,
+          videoTitle: finalTitle,
+          isPlaying: true,
+          timestamp: 0,
+          updatedAt: Date.now(),
+          updatedBy: myName
+        });
+
+        // Tự động phát tại máy mình
+        currentVideoId = vid;
+        currentVideoTitle = finalTitle;
+        if (musicCardTitleText) musicCardTitleText.innerText = finalTitle;
+        const iframe = document.getElementById('yt-bgm-iframe');
+        if (iframe) {
+          iframe.src = `https://www.youtube.com/embed/${vid}?enablejsapi=1&autoplay=1&loop=1&playlist=${vid}&playsinline=1&controls=1`;
+        }
+        if (ytBgmPlayer && typeof ytBgmPlayer.loadVideoById === 'function') {
+          try {
+            ytBgmPlayer.loadVideoById({ videoId: vid, startSeconds: 0 });
+          } catch(e) {}
+        }
+        updateMusicUI(true);
+
+        sendChatMessage(`Đã đổi video chánh điện sang: "${finalTitle}" 📺🎶`);
+        showMediaModalMsg('Đã đổi video thành công cho tất cả đồng tu!', true);
+        setTimeout(closeMediaModal, 700);
+      } catch(e) {
+        showMediaModalMsg('Lỗi cập nhật máy chủ: ' + e.message, false);
+      }
+
+      setTimeout(() => { isBroadcastingMedia = false; }, 1000);
     }
 
     function initYTPlayer() {
@@ -4316,7 +4831,6 @@
       }
     }
 
-    // Đăng ký cho cả trường hợp API tải trước hoặc tải sau
     const prevYTReady = window.onYouTubeIframeAPIReady;
     window.onYouTubeIframeAPIReady = function() {
       if (typeof prevYTReady === 'function') prevYTReady();
@@ -4351,6 +4865,55 @@
       });
     }
 
+    // Nút mở modal đổi video
+    if (btnOpenChangeMedia) {
+      btnOpenChangeMedia.addEventListener('click', (e) => {
+        e.stopPropagation();
+        openMediaModal();
+      });
+    }
+    if (btnCloseMediaModal) {
+      btnCloseMediaModal.addEventListener('click', closeMediaModal);
+    }
+    if (mediaModalBackdrop) {
+      mediaModalBackdrop.addEventListener('click', closeMediaModal);
+    }
+
+    if (btnSubmitMedia && inputMediaUrl) {
+      btnSubmitMedia.addEventListener('click', () => {
+        submitChangeMedia(inputMediaUrl.value);
+      });
+      inputMediaUrl.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          submitChangeMedia(inputMediaUrl.value);
+        }
+      });
+    }
+
+    // Các nút preset gợi ý nhạc thiền
+    document.querySelectorAll('.media-preset-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const vid = btn.getAttribute('data-id');
+        const title = btn.getAttribute('data-title');
+        submitChangeMedia(vid, title);
+      });
+    });
+
+    // Phím tắt M để mở modal đổi media
+    window.addEventListener('keydown', (e) => {
+      if (document.activeElement.tagName === 'INPUT') return;
+      if (e.key === 'm' || e.key === 'M') {
+        if (mediaModal && mediaModal.style.display !== 'none') {
+          closeMediaModal();
+        } else {
+          openMediaModal();
+        }
+      }
+      if (e.key === 'Escape') {
+        closeMediaModal();
+      }
+    });
+
     // Thu nhỏ / Phóng to card nhạc
     let isMusicCardMinimized = false;
     function toggleMinimizeMusicCard() {
@@ -4369,15 +4932,21 @@
       });
     }
     if (musicCardHeaderToggle) {
-      musicCardHeaderToggle.addEventListener('click', toggleMinimizeMusicCard);
+      musicCardHeaderToggle.addEventListener('click', (e) => {
+        if (e.target.id === 'btn-open-change-media') return;
+        toggleMinimizeMusicCard();
+      });
     }
 
     // Tự động kích hoạt âm thanh ngay khi người dùng click vào bất kỳ đâu trên trang
     window.addEventListener('click', () => {
       if (bgmEnabled && !isBgmPlaying) {
-        playBgm();
+        playBgm(false);
       }
     }, { once: true });
+
+    // Khởi động đồng bộ phòng media ngay lập tức
+    initMediaRoomSync();
 
     function enterTempleSuccess() {
       document.getElementById('merit-count').innerText = meritScore;
@@ -4638,9 +5207,10 @@
     <div class="music-card-header" id="music-card-header-toggle">
       <div class="music-card-title">
         <span class="music-card-icon">🎶</span>
-        <span>Nhạc Cổ Điển Tĩnh Tâm</span>
+        <span id="music-card-title-text">Nhạc Cổ Điển Tĩnh Tâm</span>
       </div>
       <div class="music-card-actions">
+        <button class="music-card-link-btn" id="btn-open-change-media" title="Đổi video / nhạc chánh điện cho toàn phòng">🔗 Đổi Video</button>
         <button class="music-card-min-btn" id="btn-minimize-music" title="Thu nhỏ / Mở rộng">_</button>
       </div>
     </div>
